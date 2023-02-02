@@ -1,0 +1,57 @@
+name: Test and release
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+
+  release:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+
+      matrix:
+        python-version: ["3.9"]
+      fail-fast: false
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache Python environment
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
+
+      - name: Install Poetry
+        run: pip install --no-input poetry
+
+      - name: Install Python environment
+        run: |
+          poetry config virtualenvs.in-project true
+          poetry install --no-interaction
+
+      - name: Test
+        run: poetry run pytest tests
+
+      - name: Check for version changes
+        run: |
+          old_version=$(git show HEAD^:pyproject.toml | grep '^version =' | sed 's/version = "//' | sed 's/"$//')
+          new_version=$(grep '^version =' pyproject.toml | sed 's/version = "//' | sed 's/"$//')
+          if [ "$old_version" = "$new_version" ]; then
+            exit 0
+          fi
+
+      - name: Release
+        run: poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }} && poetry publish --build
