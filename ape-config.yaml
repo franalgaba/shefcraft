@@ -1,0 +1,22 @@
+name: shefcraft
+plugins:
+  - name: starknet
+  - name: cairo
+
+default_ecosystem: starknet
+
+deployments:
+  starknet:
+    testnet:
+      - contract_type: erc20
+        address: 0x0396Bc02bbD29EF746cE064749FFf32CD5Ca679aDce5c831cA8373cF260989c6
+
+dependencies:
+  - name: OpenZeppelinCairo
+    github: OpenZeppelin/cairo-contracts
+    version: 0.6.1
+    contracts_folder: src
+
+cairo:
+  dependencies:
+    - OpenZeppelinCairo@0.6.1

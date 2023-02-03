@@ -5,16 +5,81 @@
 from starkware.cairo.common.cairo_builtins import HashBuiltin
 from starkware.cairo.common.uint256 import Uint256
 
+from openzeppelin.access.ownable.library import Ownable
 from openzeppelin.token.erc20.library import ERC20
+from openzeppelin.upgrades.library import Proxy
 
-@constructor
-func constructor{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
-    name: felt, symbol: felt, decimals: felt, initial_supply: Uint256, recipient: felt
+//
+// Initializer
+//
+
+
+@external
+func initializer{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
+    name: felt, symbol: felt, decimals: felt, initial_supply: Uint256, recipient: felt, owner: felt, proxy_admin: felt
 ) {
+    Ownable.initializer(owner);
     ERC20.initializer(name, symbol, decimals);
     ERC20._mint(recipient, initial_supply);
+    Proxy.initializer(proxy_admin);
     return ();
 }
+
+//
+// Proxy administration
+//
+
+@view
+func getImplementationHash{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() -> (
+    implementation: felt
+) {
+    return Proxy.get_implementation_hash();
+}
+
+@view
+func getAdmin{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() -> (admin: felt) {
+    return Proxy.get_admin();
+}
+
+@external
+func upgrade{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
+    new_implementation: felt
+) {
+    Proxy.assert_only_admin();
+    Proxy._set_implementation_hash(new_implementation);
+    return ();
+}
+
+@external
+func setAdmin{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(new_admin: felt) {
+    Proxy.assert_only_admin();
+    Proxy._set_admin(new_admin);
+    return ();
+}
+
+//
+// Ownership administration
+//
+
+@view
+func owner{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() -> (owner: felt) {
+    return Ownable.owner();
+}
+
+@external
+func transferOwnership{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
+    newOwner: felt
+) {
+    Ownable.transfer_ownership(newOwner);
+    return ();
+}
+
+@external
+func renounceOwnership{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() {
+    Ownable.renounce_ownership();
+    return ();
+}
+
 
 //
 // Getters
