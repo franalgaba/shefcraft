@@ -35,7 +35,7 @@ pip install ape-starknet
 ape plugins install cairo starknet
 ```
 
-### Start Ape Starknet consol
+### Start Ape Starknet consol - on Starknet local network
 
 Start a local starknet network and interacte with the network to manage account, contract and interact with contract.
 
@@ -43,13 +43,18 @@ Start a local starknet network and interacte with the network to manage account,
 ape console --network starknet:local
 ```
 
-### Declare and deploy single contract
+### Declare the account you will use
 
+Define the account to manage your smart contracts
 ```python
 account = accounts.containers["starknet"].test_accounts[0]
 print(account)
 > 0x046854A8c52697D7d2a3F356c406754961407bCB7f642707C9Aaa5E7b1ca5aFD
+```
 
+### Declare and deploy single contract
+
+```python
 account.declare(project.token.erc20)
 ```
 
@@ -111,3 +116,33 @@ proxy = project.proxy.deploy(erc20declared.class_hash, 1295919550572838631247819
 ```
 
 And you go, your ERC20 and your Proxy are deployed. 
+
+
+### Start Ape Starknet consol - on Starknet Testnet
+
+Do the same operation as for Starknet local network, by changing the section "Declare the account you will use" with the section below, by the creation of an account on Starknet testnet.
+
+#### Create an account on Starknet Testnet
+
+To manage the deployment on Starknet testnet, you need to create and add fund on your account.
+
+Use the [Ape Starknet Account Management](https://github.com/ApeWorX/ape-starknet#account-management) to create an account on testnet and deploy the upgradeable smart contract on testnet with Ape 🧪
+
+create your account
+```bash
+ape starknet accounts create <NEW-ALIAS>
+```
+
+access to Starknet testnet
+```bash
+ape console --network starknet:testnet
+```
+
+Define the account to manage your smart contracts
+```python
+account = accounts.load("<NEW-ALIAS>")
+print(account)
+> 0x0567.....9aDA
+```
+
+Next, come back to "Declare and deploy contract".
