@@ -7,19 +7,8 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "arrow"
-version = "1.2.3"
-description = "Better dates & times for Python"
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[package.dependencies]
-python-dateutil = ">=2.7.0"
-
-[[package]]
 name = "astroid"
-version = "2.12.13"
+version = "2.14.1"
 description = "An abstract syntax tree for Python with inference support."
 category = "dev"
 optional = false
@@ -27,7 +16,7 @@ python-versions = ">=3.7.2"
 
 [package.dependencies]
 lazy-object-proxy = ">=1.4.0"
-typing-extensions = {version = ">=3.10", markers = "python_version < \"3.10\""}
+typing-extensions = {version = ">=4.0.0", markers = "python_version < \"3.11\""}
 wrapt = {version = ">=1.11,<2", markers = "python_version < \"3.11\""}
 
 [[package]]
@@ -74,17 +63,6 @@ toml = ["toml"]
 yaml = ["pyyaml"]
 
 [[package]]
-name = "binaryornot"
-version = "0.4.4"
-description = "Ultra-lightweight pure Python package to check if a file is binary or text."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-chardet = ">=3.0.2"
-
-[[package]]
 name = "black"
 version = "20.8b1"
 description = "The uncompromising code formatter."
@@ -123,23 +101,12 @@ optional = false
 python-versions = ">=3.6.1"
 
 [[package]]
-name = "chardet"
-version = "5.1.0"
-description = "Universal encoding detector for Python 3"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[[package]]
 name = "charset-normalizer"
-version = "2.1.1"
+version = "3.0.1"
 description = "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
 category = "main"
 optional = false
-python-versions = ">=3.6.0"
-
-[package.extras]
-unicode_backport = ["unicodedata2"]
+python-versions = "*"
 
 [[package]]
 name = "click"
@@ -170,24 +137,6 @@ python-versions = "*"
 
 [package.extras]
 test = ["flake8 (==3.7.8)", "hypothesis (==3.55.3)"]
-
-[[package]]
-name = "cookiecutter"
-version = "1.7.3"
-description = "A command-line utility that creates projects from project templates, e.g. creating a Python package project from a Python package project template."
-category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-
-[package.dependencies]
-binaryornot = ">=0.4.4"
-click = ">=7.0"
-Jinja2 = ">=2.7,<4.0.0"
-jinja2-time = ">=0.2.0"
-poyo = ">=0.5.0"
-python-slugify = ">=4.0.0"
-requests = ">=2.23.0"
-six = ">=1.10"
 
 [[package]]
 name = "darglint"
@@ -234,15 +183,15 @@ pipenv = ["pipenv"]
 
 [[package]]
 name = "filelock"
-version = "3.8.2"
+version = "3.9.0"
 description = "A platform independent file lock."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 
 [package.extras]
-docs = ["furo (>=2022.9.29)", "sphinx (>=5.3)", "sphinx-autodoc-typehints (>=1.19.5)"]
-testing = ["covdefaults (>=2.2.2)", "coverage (>=6.5)", "pytest (>=7.2)", "pytest-cov (>=4)", "pytest-timeout (>=2.1)"]
+docs = ["furo (>=2022.12.7)", "sphinx-autodoc-typehints (>=1.19.5)", "sphinx (>=5.3)"]
+testing = ["covdefaults (>=2.2.2)", "coverage (>=7.0.1)", "pytest-cov (>=4)", "pytest-timeout (>=2.1)", "pytest (>=7.2)"]
 
 [[package]]
 name = "flake8"
@@ -261,7 +210,7 @@ pyflakes = ">=2.3.0,<2.4.0"
 name = "gitdb"
 version = "4.0.10"
 description = "Git Object Database"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -272,7 +221,7 @@ smmap = ">=3.0.1,<6"
 name = "gitpython"
 version = "3.1.30"
 description = "GitPython is a python library used to interact with Git repositories"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -281,7 +230,7 @@ gitdb = ">=4.0.1,<5"
 
 [[package]]
 name = "identify"
-version = "2.5.11"
+version = "2.5.17"
 description = "File identification library for Python"
 category = "dev"
 optional = false
@@ -300,65 +249,31 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "iniconfig"
-version = "1.1.1"
-description = "iniconfig: brain-dead simple config-ini parsing"
+version = "2.0.0"
+description = "brain-dead simple config-ini parsing"
 category = "dev"
 optional = false
-python-versions = "*"
+python-versions = ">=3.7"
 
 [[package]]
 name = "isort"
-version = "5.11.4"
+version = "5.12.0"
 description = "A Python utility / library to sort Python imports."
 category = "dev"
 optional = false
-python-versions = ">=3.7.0"
+python-versions = ">=3.8.0"
 
 [package.extras]
-colors = ["colorama (>=0.4.3,<0.5.0)"]
+colors = ["colorama (>=0.4.3)"]
 requirements-deprecated-finder = ["pip-api", "pipreqs"]
-pipfile-deprecated-finder = ["pipreqs", "requirementslib"]
+pipfile-deprecated-finder = ["pip-shims (>=0.5.2)", "pipreqs", "requirementslib"]
 plugins = ["setuptools"]
 
 [[package]]
-name = "jinja2"
-version = "3.1.2"
-description = "A very fast and expressive template engine."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-MarkupSafe = ">=2.0"
-
-[package.extras]
-i18n = ["Babel (>=2.7)"]
-
-[[package]]
-name = "jinja2-time"
-version = "0.2.0"
-description = "Jinja2 Extension for Dates and Times"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-arrow = "*"
-jinja2 = "*"
-
-[[package]]
 name = "lazy-object-proxy"
-version = "1.8.0"
+version = "1.9.0"
 description = "A fast and thorough lazy object proxy."
 category = "dev"
-optional = false
-python-versions = ">=3.7"
-
-[[package]]
-name = "markupsafe"
-version = "2.1.1"
-description = "Safely add untrusted strings to HTML/XML markup."
-category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -388,7 +303,7 @@ python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*
 
 [[package]]
 name = "packaging"
-version = "22.0"
+version = "23.0"
 description = "Core utilities for Python packages"
 category = "dev"
 optional = false
@@ -396,7 +311,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "pathspec"
-version = "0.10.3"
+version = "0.11.0"
 description = "Utility library for gitignore style pattern matching of file paths."
 category = "dev"
 optional = false
@@ -404,7 +319,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "pbr"
-version = "5.11.0"
+version = "5.11.1"
 description = "Python Build Reasonableness"
 category = "dev"
 optional = false
@@ -412,15 +327,15 @@ python-versions = ">=2.6"
 
 [[package]]
 name = "platformdirs"
-version = "2.6.0"
+version = "2.6.2"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 
 [package.extras]
-docs = ["furo (>=2022.9.29)", "proselint (>=0.13)", "sphinx-autodoc-typehints (>=1.19.4)", "sphinx (>=5.3)"]
-test = ["appdirs (==1.4.4)", "pytest-cov (>=4)", "pytest-mock (>=3.10)", "pytest (>=7.2)"]
+docs = ["furo (>=2022.12.7)", "proselint (>=0.13)", "sphinx-autodoc-typehints (>=1.19.5)", "sphinx (>=5.3)"]
+test = ["appdirs (==1.4.4)", "covdefaults (>=2.2.2)", "pytest-cov (>=4)", "pytest-mock (>=3.10)", "pytest (>=7.2)"]
 
 [[package]]
 name = "pluggy"
@@ -433,14 +348,6 @@ python-versions = ">=3.6"
 [package.extras]
 dev = ["pre-commit", "tox"]
 testing = ["pytest", "pytest-benchmark"]
-
-[[package]]
-name = "poyo"
-version = "0.5.0"
-description = "A lightweight YAML Parser for Python. 🐓"
-category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "pre-commit"
@@ -494,7 +401,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "pygments"
-version = "2.13.0"
+version = "2.14.0"
 description = "Pygments is a syntax highlighting package written in Python."
 category = "main"
 optional = false
@@ -505,14 +412,14 @@ plugins = ["importlib-metadata"]
 
 [[package]]
 name = "pylint"
-version = "2.15.9"
+version = "2.16.1"
 description = "python code static checker"
 category = "dev"
 optional = false
 python-versions = ">=3.7.2"
 
 [package.dependencies]
-astroid = ">=2.12.13,<=2.14.0-dev0"
+astroid = ">=2.14.1,<=2.16.0-dev0"
 colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
 dill = {version = ">=0.2", markers = "python_version < \"3.11\""}
 isort = ">=4.2.5,<6"
@@ -548,31 +455,6 @@ toml = "*"
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
 
 [[package]]
-name = "python-dateutil"
-version = "2.8.2"
-description = "Extensions to the standard Python datetime module"
-category = "main"
-optional = false
-python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
-
-[package.dependencies]
-six = ">=1.5"
-
-[[package]]
-name = "python-slugify"
-version = "7.0.0"
-description = "A Python slugify application that also handles Unicode"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-text-unidecode = ">=1.3"
-
-[package.extras]
-unidecode = ["Unidecode (>=1.1.1)"]
-
-[[package]]
 name = "pyupgrade"
 version = "2.38.4"
 description = "A tool to automatically upgrade syntax for newer versions."
@@ -601,7 +483,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "requests"
-version = "2.28.1"
+version = "2.28.2"
 description = "Python HTTP for Humans."
 category = "main"
 optional = false
@@ -609,7 +491,7 @@ python-versions = ">=3.7, <4"
 
 [package.dependencies]
 certifi = ">=2017.4.17"
-charset-normalizer = ">=2,<3"
+charset-normalizer = ">=2,<4"
 idna = ">=2.5,<4"
 urllib3 = ">=1.21.1,<1.27"
 
@@ -647,18 +529,10 @@ packaging = "*"
 requests = "*"
 
 [[package]]
-name = "six"
-version = "1.16.0"
-description = "Python 2 and 3 compatibility utilities"
-category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
-
-[[package]]
 name = "smmap"
 version = "5.0.0"
 description = "A pure Python implementation of a sliding window memory map manager"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.6"
 
@@ -680,14 +554,6 @@ python-versions = ">=3.8"
 
 [package.dependencies]
 pbr = ">=2.0.0,<2.1.0 || >2.1.0"
-
-[[package]]
-name = "text-unidecode"
-version = "1.3"
-description = "The most basic Text::Unidecode port"
-category = "main"
-optional = false
-python-versions = "*"
 
 [[package]]
 name = "tokenize-rt"
@@ -756,7 +622,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "urllib3"
-version = "1.26.13"
+version = "1.26.14"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 category = "main"
 optional = false
@@ -795,25 +661,21 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9,<3.10"
-content-hash = "bc65dcc6dd7535008d65b6dbab58ca77773f543fc7c5e38eb125bf4ee2b01df5"
+content-hash = "4b30c7ed5ca70f74ff447ebf338298bb0f85b5a5f62884333a222a7a648b5c4b"
 
 [metadata.files]
 appdirs = []
-arrow = []
 astroid = []
 atomicwrites = []
 attrs = []
 bandit = []
-binaryornot = []
 black = []
 certifi = []
 cfgv = []
-chardet = []
 charset-normalizer = []
 click = []
 colorama = []
 commonmark = []
-cookiecutter = []
 darglint = []
 dill = []
 distlib = []
@@ -826,10 +688,7 @@ identify = []
 idna = []
 iniconfig = []
 isort = []
-jinja2 = []
-jinja2-time = []
 lazy-object-proxy = []
-markupsafe = []
 mccabe = []
 mypy-extensions = []
 nodeenv = []
@@ -838,7 +697,6 @@ pathspec = []
 pbr = []
 platformdirs = []
 pluggy = []
-poyo = []
 pre-commit = []
 py = []
 pycodestyle = []
@@ -847,19 +705,15 @@ pyflakes = []
 pygments = []
 pylint = []
 pytest = []
-python-dateutil = []
-python-slugify = []
 pyupgrade = []
 pyyaml = []
 regex = []
 requests = []
 rich = []
 safety = []
-six = []
 smmap = []
 snowballstemmer = []
 stevedore = []
-text-unidecode = []
 tokenize-rt = []
 toml = []
 tomli = []

@@ -1,0 +1,16 @@
+{
+    "options": {
+        "projectName": "My ERC20 Project"
+    },
+    "contracts": [
+        {
+            "name": "MY_TOKEN",
+            "type": "erc20Upgradeable",
+            "variables": {
+                "symbol": "MYT",
+                "decimals": 18,
+                "totalSupply": 1000
+            }
+        }
+    ]
+}

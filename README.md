@@ -8,6 +8,12 @@ A declarative and deterministic framework for deploying and upgrading Cairo smar
 - Upgrade existing contracts
 - Declarative syntax for better developer experience
 
+Coming soon:
+- Fully deterministic and idempotent deployments
+- Protostar compatibility
+- Nile compatibility
+- Automatically verifies contracts on StarkScan
+
 ### Cairo Upgradable ERC20
 
 Implementation of an ERC20 upgradeable in cairo 0.10.3
@@ -18,18 +24,66 @@ Implementation of an ERC20 upgradeable in cairo 0.10.3
 - [OpenZeppelin ERC20 Cairo](https://github.com/OpenZeppelin/cairo-contracts/tree/ad399728e6fcd5956a4ed347fb5e8ee731d37ec4/src/openzeppelin/token/erc20)
 - [Starknet Guide - Writing upgradeable contracts](https://medium.com/@EmpiricNetwork/starknet-guide-writing-upgradable-contracts-using-a-proxy-af3f107f238b)
 
-#### Getting Started
+## Getting started
 
-Install [nile](https://github.com/OpenZeppelin/nile) to compile Cairo contract.
+Install the project dependencies:
+```
+poetry install
+```
 
-Use `nile compile` to compile proxy and erc20 contracts. 
+Install Ape for Starknet:
+```
+pip install ape-starknet
 
-## Getting Started with Ape
+ape plugins install cairo starknet
+```
+
+You can see the available commands running:
+
+```
+shefcraft --help
+```
+
+Now define your Shefcraft file to define the contract you want to deploy:
+
+```json
+{
+    // Configuration settings:
+    "options": {
+        "projectName": "My ERC20 Project"
+    },
+    // Contract definitions:
+    "contracts": [
+        {
+            "name": "MY_TOKEN",
+            "type": "erc20Upgradeable",
+            "variables": {
+                "symbol": "MYT",
+                "decimals": 18,
+                "totalSupply": 1000
+            }
+        }
+    ]
+}
+```
+
+Now deploy your defined project into StarkNet:
+
+```bash
+shefcraft deploy deploy/project.json --network starknet:testnet
+```
+
+## Contributing
 
 ### Install Ape Starknet
 
-Install Ape for Starknet
-```bash
+Install the project dependencies:
+```
+poetry install
+```
+
+Install Ape for Starknet:
+```
 pip install ape-starknet
 
 ape plugins install cairo starknet
@@ -118,7 +172,7 @@ proxy = project.proxy.deploy(erc20declared.class_hash, 1295919550572838631247819
 And you go, your ERC20 and your Proxy are deployed. 
 
 
-### Start Ape Starknet consol - on Starknet Testnet
+### Start Ape Starknet console - on Starknet Testnet
 
 Do the same operation as for Starknet local network, by changing the section "Declare the account you will use" with the section below, by the creation of an account on Starknet testnet.
 

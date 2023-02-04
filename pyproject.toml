@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "shefcraft"
 version = "0.1.0"
-description = "Cairo dependency management and packaging made easy."
+description = "Manage upgradeable contracts with ease."
 readme = "README.md"
 authors = [ "Fran Algaba <f.algaba.work@gmail.com>",]
 license = "MIT"
