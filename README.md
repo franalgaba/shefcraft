@@ -91,7 +91,7 @@ ape plugins install cairo starknet
 
 ### Start Ape Starknet consol - on Starknet local network
 
-Start a local starknet network and interacte with the network to manage account, contract and interact with contract.
+Start a local starknet network and interact with the network to manage account, contract and interact with contract.
 
 ```bash
 ape console --network starknet:local
@@ -141,7 +141,7 @@ erc20.balanceOf(0x05df9253452dBfD8cedCcd0e7C1a76dB564b56f7Eb29f7937883bd8ce94f12
 
 ### Declare and deploy Upgradeable ERC20 contract
 
-prerequis: You need to calculate the selector value for 'initializer' methode of ERC20 upgradeable.
+prerequisite: You need to calculate the selector value for 'initializer' method of ERC20 upgradeable.
 
 ```python
 from starkware.starknet.public.abi import get_selector_from_name
@@ -178,7 +178,7 @@ Do the same operation as for Starknet local network, by changing the section "De
 
 #### Create an account on Starknet Testnet
 
-To manage the deployment on Starknet testnet, you need to create and add fund on your account.
+To manage the deployment on Starknet testnet, you need to create and add funds to your account.
 
 Use the [Ape Starknet Account Management](https://github.com/ApeWorX/ape-starknet#account-management) to create an account on testnet and deploy the upgradeable smart contract on testnet with Ape 🧪
 
